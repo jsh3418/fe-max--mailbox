@@ -1,0 +1,40 @@
+.app {
+  border: 1px solid black;
+  width: 1200px;
+  height: 720px;
+}
+
+.header {
+  font-weight: 600;
+  font-size: 24px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.map-container {
+  display: flex;
+}
+
+.map {
+  min-width: 800px;
+  height: 600px;
+  margin-left: 30px;
+  margin-right: 10px;
+  border: 1px solid black;
+}
+
+.map-aside__search-button {
+  background-color: red;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 15px;
+  margin-bottom: 30px;
+}
+
+.map-aside__village-count,
+.map-aside__sort-by-mailbox-size {
+  font-size: 30px;
+  margin-bottom: 30px;
+  margin-right: 30px;
+}
