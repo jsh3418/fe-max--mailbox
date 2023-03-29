@@ -3,36 +3,33 @@ export const customQuerySelector = (selector: string): Element | null => {
   const selectorString = selector.slice(1, selector.length);
 
   if (firstChar === ".") {
-    return findElement(document.body, "className", selectorString);
+    return findElement("className", selectorString);
   }
 
   if (firstChar === "#") {
-    return findElement(document.body, "id", selectorString);
+    return findElement("id", selectorString);
   }
 
-  return findElement(document.body, "tagName", selector);
+  return findElement("tagName", selector);
 };
 
 const findElement = (
-  element: Element,
   searchType: "className" | "id" | "tagName",
-  keyword: string
+  keyword: string,
+  element: Element = document.body
 ): Element | null => {
-  if (
-    (searchType === "className" && element.classList.contains(keyword)) ||
-    (searchType === "id" && element.id === keyword) ||
-    (searchType === "tagName" && element.tagName === keyword.toLocaleUpperCase())
-  ) {
+  if (isFound(searchType, keyword, element)) {
     return element;
   }
 
   if (element.children) {
     let findElementResult: Element | null = null;
     Array.from(element.children).some((child) => {
-      const result = findElement(child, searchType, keyword);
+      const result = findElement(searchType, keyword, child);
 
       if (result) {
         findElementResult = result;
+
         return true;
       }
     });
@@ -41,4 +38,16 @@ const findElement = (
   }
 
   return null;
+};
+
+const isFound = (
+  searchType: "className" | "id" | "tagName",
+  keyword: string,
+  element: Element
+): Boolean => {
+  return (
+    (searchType === "className" && element.classList.contains(keyword)) ||
+    (searchType === "id" && element.id === keyword) ||
+    (searchType === "tagName" && element.tagName === keyword.toLocaleUpperCase())
+  );
 };
