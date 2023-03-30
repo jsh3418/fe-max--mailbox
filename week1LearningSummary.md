@@ -72,3 +72,5 @@ let의 경우 블록 스코프(block scope)로 i가 클로저 되어 console.log
 [자바스크립트 대표적 클로저 실수를 let으로 해결?](https://www.youtube.com/watch?v=RZ3gXcI1MZY)
 
 [What the heck is the event loop anyway? | Philip Roberts | JSConf EU](https://youtu.be/8aGhZQkoFbQ)
+
+#geppetto
