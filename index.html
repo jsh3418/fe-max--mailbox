@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet" />
+      
+    <link rel="stylesheet" href="./src/css/reset.css" />
+    <link rel="stylesheet" href="./src/css/style.css" />
+    <title>마을지도</title>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <div class="inner">
+          <h1 aria-label="마을 지도" tabindex="1">
+            <img src="./src/img/kr.svg" alt="태극기" />
+            <span>마을지도</span>
+            <img src="./src/img/map.svg" alt="지도 이미지" />
+          </h1>
+        </div>
+      </header>
+      <div class="container">
+        <div class="inner">
+          <main id="map">
+            <h1 class="blind">메인</h1>
+            <article id="child">
+
+            </article>
+          </main>
+          <aside id="info">
+            <h1 class="blind">지도 설명</h1>
+            <button class="confirm">빨간 우체통 확인</button>
+            <p class="info__content">
+              D, J, I, K, L<br>
+              총 5개의 마을입니다.
+            </p>
+            <p class="info__content">
+              우체통의 크기는<br>
+              L, K, J, I, D 순입니다.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

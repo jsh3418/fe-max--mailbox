@@ -20,8 +20,8 @@ https://www.figma.com/file/wqLZgcrzYOoiWwLFdrRKzH/Untitled?node-id=0%3A1&t=YLaBa
 - 동기처리를 한다.
 
 ### 구현 체크리스트 
-- [ ] 디자인을 기반으로 레이아웃을 HTML로 구현한다.
-- [ ] CSS를 작성한다.
+- [x] 디자인을 기반으로 레이아웃을 HTML로 구현한다.
+- [x] CSS를 작성한다.
 - [ ] JS를 작성한다.
   - [ ] Element 클래스를 만든다
     - [ ] init()
@@ -33,4 +33,10 @@ https://www.figma.com/file/wqLZgcrzYOoiWwLFdrRKzH/Untitled?node-id=0%3A1&t=YLaBa
       - [ ] Map
         - [ ] Town 클래스를 만든다
           - [ ] mailbox
-      - [ ] Info 클래스를 만들다
+      - [ ] Info 클래스를 만든다
+
+### 구현 계획
+- 우선 map이 가질 수 있는 최소 크기를 산정한다
+- 내부의 크기를 좌표계로 활용하며 5px를 단위로 그리드 객체를 만든다
+- 새로운 요소를 생성할때 해당 좌표계에 겹치는 요소가 있는지를 확인하고 들어갈 수 있는 경우에 요소를 삽입한다.
+- 요소가 삽입되어 들어갈 때 역시 동일하게 활용하여 들어갈 경우에 객체를 생성하여 넣어 준다
