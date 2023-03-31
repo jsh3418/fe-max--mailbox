@@ -62,7 +62,7 @@ header .inner h1 img {
   background: rgba(126, 255, 245, 0.3);
 }
 
-.container .inner #map {
+#town-map {
   width: 920px;
   background-color: white;
   border-radius: 15px;
@@ -71,7 +71,45 @@ header .inner h1 img {
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.container .inner #info {
+
+#town-map .town-map__body {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+#town-map .town {
+  position: absolute;
+  border: 3px solid black;
+  padding: 15px;
+  border-radius: 15px;
+  box-sizing: border-box;
+}
+
+
+#town-map .town .town__body {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+#town-map .town .mailbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+
+#town-map .town h1{
+  position: absolute;
+  top: calc(100% - 15px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Song Myung", serif;
+  font-weight: 700;
+}
+
+#info {
   flex-grow: 1;
   background-color: white;
   border-radius: 15px;
@@ -80,7 +118,7 @@ header .inner h1 img {
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.container .inner #info .confirm {
+#info .confirm {
   width: 100%;
   font-family: "Song Myung", serif;
   font-size: 36px;
@@ -92,9 +130,10 @@ header .inner h1 img {
   color: #ffffff;
 }
 
-.container .inner #info p {
+#info p {
   font-family: "Song Myung", serif;
   font-weight: bold;
   font-size: 32px;
   margin-top: 130px;
 }
+

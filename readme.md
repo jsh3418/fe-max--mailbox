@@ -8,8 +8,8 @@ https://www.figma.com/file/wqLZgcrzYOoiWwLFdrRKzH/Untitled?node-id=0%3A1&t=YLaBa
 
 ### 미션1 마을만들기
 
-- [ ] 위치, 크기, 갯수 랜덤
-- [ ] 우체통 갯수 크기 랜덤
+- [x] 위치, 크기, 갯수 랜덤
+- [x] 우체통 갯수 크기 랜덤
 
 ### 미션2 마을 정보 표시
 
@@ -36,11 +36,14 @@ https://www.figma.com/file/wqLZgcrzYOoiWwLFdrRKzH/Untitled?node-id=0%3A1&t=YLaBa
   - [ ] App
     - [x] Header
     - [x] Main
-      - [ ] Map
-        - [ ] Town 클래스를 만든다
-          - [ ] mailbox
-      - [ ] Info 클래스를 만든다
-
+      - [x] Map
+        - [x] Town 클래스를 만든다
+          - [x] mailbox
+      - [x] Info 클래스를 만든다
+    - [ ] 빨간 우체통 확인
+      - [ ] 마을정보 텍스트 표시
+      - [ ] 우체통 크기순 텍스트 표시
+      - [ ] 빨간 우체통 확인 기능 구현
 ### 구현 계획
 
 - 우선 map이 가질 수 있는 최소 크기를 산정한다

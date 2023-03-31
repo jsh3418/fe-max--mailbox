@@ -1,8 +1,12 @@
+import { FakeDom } from "../FakeDom.js";
+
 export class Element {
   constructor(parent) {
     this.parent = null;
     this.domNode = null;
+    this.dom = new FakeDom();
     this.init(parent);
+    this.dom.addElement(this);
   }
 
   init(parent) {
