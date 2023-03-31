@@ -4,6 +4,9 @@ for (let i = 65; i < 91; i++) {
   ALPHA.push(String.fromCharCode(i));
 }
 
+export const getRandomBetween = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1)) + min;
+
 export function numToAlpha(num) {
   if (num === 0) return "A";
   let str = "";
@@ -27,15 +30,9 @@ export function gridInRange(grid, point) {
 }
 
 export function overLapCheck(grid, p1, p2) {
-  if(grid[p1.coord.y][p1.coord.x])return true;
-  if(grid[p2.coord.y][p2.coord.x])return true;
-
-  if(grid[p1.coord.y][p2.coord.x])return true;
-  if(grid[p2.coord.y][p1.coord.x])return true;
-
   for (let row = p1.coord.y; row <= p2.coord.y; row++) {
     for (let col = p1.coord.x; col <= p2.coord.x; col++) {
-      if(grid[row][col])return true;
+      if (grid[row][col]) return true;
     }
   }
 

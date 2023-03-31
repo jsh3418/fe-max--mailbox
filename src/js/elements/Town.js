@@ -1,8 +1,12 @@
 import { Point } from "../Point.js";
-import { gridInRange, markingGrid, numToAlpha, overLapCheck } from "../utils.js";
-import { getRandomBetween } from "../utils/getRandomBetween.js";
+import {
+  getRandomBetween,
+  gridInRange,
+  markingGrid,
+  numToAlpha,
+  overLapCheck,
+} from "../utils.js";
 import { Element } from "./Element.js";
-
 
 const WIDTH_LIMIT = 8;
 const HEIGHT_LIMIT = 8;
@@ -17,7 +21,6 @@ export class Town extends Element {
   constructor(parent, p1, p2) {
     super(parent);
     this.initPos(p1, p2);
-    this.mailbox = null;
   }
 
   init(parent) {
@@ -28,7 +31,8 @@ export class Town extends Element {
     this.domNode.className = "town";
 
     const h1 = document.createElement("H1");
-    h1.textContent = numToAlpha(this.id);
+    this.name = numToAlpha(this.id);
+    h1.textContent = this.name;
     this.domNode.appendChild(h1);
   }
 
@@ -42,12 +46,12 @@ export class Town extends Element {
 
     const hasMailbox = Math.random() > 0.5;
 
-    if(hasMailbox) {
-      this.generateMailbox()
+    if (hasMailbox) {
+      this.generateMailbox();
     }
 
     this.render();
-    this.generateTown()
+    this.generateTown();
   }
 
   generateMailbox() {
@@ -61,47 +65,50 @@ export class Town extends Element {
     this.domNode.appendChild(this.mailbox);
   }
 
-  async generateTown() {
-    if (!this.body) {
-      this.body = document.createElement("DIV");
-      this.body.className = "town__body";
-      this.domNode.appendChild(this.body);
-    }
+  generateTown() {
+    return new Promise(async (resolve, reject) => {
+      if (!this.body) {
+        this.body = document.createElement("DIV");
+        this.body.className = "town__body";
+        this.domNode.appendChild(this.body);
+      }
 
-    this.body.innerHTML = "";
+      this.body.innerHTML = "";
 
-    const { width, height } = this.body.getBoundingClientRect();
+      const { width, height } = this.body.getBoundingClientRect();
 
-    this.grid = Array.from({ length: parseInt(height / GRID_UNIT) }, () =>
-      Array.from({ length: parseInt(width / GRID_UNIT) }, () => false)
-    );
-
-    for (let i = 0; i < MAX_TRY_COUNT; i++) {
-      const p1 = new Point(
-        parseInt((Math.random() * width) / GRID_UNIT),
-        parseInt((Math.random() * height) / GRID_UNIT)
-      );
-      if (!gridInRange(this.grid, p1)) continue;
-
-      const p2 = new Point(
-        parseInt(
-          p1.coord.x +
-            (Math.random() * (width - p1.coord.x * GRID_UNIT)) / GRID_UNIT
-        ),
-        parseInt(
-          p1.coord.y +
-            (Math.random() * (height - p1.coord.y * GRID_UNIT)) / GRID_UNIT
-        )
+      this.grid = Array.from({ length: parseInt(height / GRID_UNIT) }, () =>
+        Array.from({ length: parseInt(width / GRID_UNIT) }, () => false)
       );
 
-      if (!gridInRange(this.grid, p2)) continue;
+      for (let i = 0; i < MAX_TRY_COUNT; i++) {
+        const p1 = new Point(
+          parseInt((Math.random() * width) / GRID_UNIT),
+          parseInt((Math.random() * height) / GRID_UNIT)
+        );
+        if (!gridInRange(this.grid, p1)) continue;
 
-      if (overLapCheck(this.grid, p1, p2)) continue;
-      if (p2.coord.x - p1.coord.x < WIDTH_LIMIT) continue;
-      if (p2.coord.y - p1.coord.y < HEIGHT_LIMIT) continue;
-      await markingGrid(this.grid, p1, p2);
+        const p2 = new Point(
+          parseInt(
+            p1.coord.x +
+              (Math.random() * (width - p1.coord.x * GRID_UNIT)) / GRID_UNIT
+          ),
+          parseInt(
+            p1.coord.y +
+              (Math.random() * (height - p1.coord.y * GRID_UNIT)) / GRID_UNIT
+          )
+        );
 
-      const town = new Town(this.body, p1, p2);
-    }
+        if (!gridInRange(this.grid, p2)) continue;
+
+        if (overLapCheck(this.grid, p1, p2)) continue;
+        if (p2.coord.x - p1.coord.x < WIDTH_LIMIT) continue;
+        if (p2.coord.y - p1.coord.y < HEIGHT_LIMIT) continue;
+        await markingGrid(this.grid, p1, p2);
+
+        const town = new Town(this.body, p1, p2);
+        resolve();
+      }
+    });
   }
 }

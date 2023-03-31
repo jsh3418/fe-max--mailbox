@@ -8,7 +8,7 @@ export class App extends Element {
     super($body);
   }
 
-  init(parent) {
+  async init(parent) {
     this.parent = parent;
     this.domNode = parent.children[0];
     this.domNode.innerHTML = "";
@@ -19,8 +19,7 @@ export class App extends Element {
     container.render();
 
     const townMap = this.dom.select("TownMap");
-    
-    townMap.generateTown()
-    // townMap.generateTown();
+    await townMap.generateTown();
+    const info = this.dom.select("Info");
   }
 }

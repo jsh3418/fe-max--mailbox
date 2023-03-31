@@ -24,7 +24,7 @@ export class Header extends Element {
     h1.appendChild(flagImg);
 
     const span = document.createElement("SPAN");
-    span.textContent = "마을지도";
+    span.textContent = " 마을지도 ";
     h1.appendChild(span);
 
     const mapImg = document.createElement("IMG");
