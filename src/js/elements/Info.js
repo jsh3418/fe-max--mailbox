@@ -36,7 +36,7 @@ export class Info extends Element {
 
     const totalCount = document.createElement("P");
     totalCount.className = "info__content";
-    totalCount.innerHTML = `${townNames.join(", ")}<br /><br />총 ${
+    totalCount.innerHTML = `우체통이 확인된 마을은<br /><br />${townNames.join(", ")}<br /><br />총 ${
       hasMailBoxTowns.length
     }개의 마을입니다.`;
     this.domNode.appendChild(totalCount);
@@ -59,12 +59,14 @@ export class Info extends Element {
       }
     }
 
-    const sortByMailbox = document.createElement("P");
-    sortByMailbox.className = "info__content";
-    sortByMailbox.innerHTML = `우체통의 크기는<br /><br />${hasMailBoxTowns
-      .map((town) => town.name)
-      .join(", ")}<br /><br />순입니다`;
-    this.domNode.appendChild(sortByMailbox);
+    if (hasMailBoxTowns.length > 0) {
+      const sortByMailbox = document.createElement("P");
+      sortByMailbox.className = "info__content";
+      sortByMailbox.innerHTML = `우체통의 크기는<br /><br />${hasMailBoxTowns
+        .map((town) => town.name)
+        .join(", ")}<br /><br />순입니다`;
+      this.domNode.appendChild(sortByMailbox);
+    }
   }
 }
 

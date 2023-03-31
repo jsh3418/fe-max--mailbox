@@ -8,11 +8,11 @@ import {
 } from "../utils.js";
 import { Element } from "./Element.js";
 
-const WIDTH_LIMIT = 8;
-const HEIGHT_LIMIT = 8;
+const WIDTH_LIMIT = 32;
+const HEIGHT_LIMIT = 32;
 
 const GRID_UNIT = 5;
-const MAX_TRY_COUNT = 10;
+const MAX_TRY_COUNT = 100;
 
 const MIN_MAILBOX_SIZE = 20;
 const MAX_MAILBOX_SIZE = 80;
@@ -37,10 +37,10 @@ export class Town extends Element {
   }
 
   initPos(p1, p2) {
-    this.domNode.style.left = `${p1.coord.x * 5}px`;
-    this.domNode.style.top = `${p1.coord.y * 5}px`;
-    const width = (p2.coord.x - p1.coord.x) * 5;
-    const height = (p2.coord.y - p1.coord.y) * 5;
+    this.domNode.style.left = `${p1.coord.x * GRID_UNIT}px`;
+    this.domNode.style.top = `${p1.coord.y * GRID_UNIT}px`;
+    const width = (p2.coord.x - p1.coord.x) * GRID_UNIT;
+    const height = (p2.coord.y - p1.coord.y) * GRID_UNIT;
     this.domNode.style.width = `${width}px`;
     this.domNode.style.height = `${height}px`;
 

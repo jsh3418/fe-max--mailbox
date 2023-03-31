@@ -4,9 +4,9 @@ import { Element } from "./Element.js";
 import { Town } from "./Town.js";
 
 const GRID_UNIT = 5;
-const MAX_TRY_COUNT = 10;
-const WIDTH_LIMIT = 8;
-const HEIGHT_LIMIT = 8;
+const MAX_TRY_COUNT = 100;
+const WIDTH_LIMIT = 32;
+const HEIGHT_LIMIT = 32;
 
 export class TownMap extends Element {
   constructor(parent) {
